@@ -17,3 +17,10 @@ Ok, it seemed to take a couple of tries for that to work. Was it just slow, or d
  
 Is that correct? 
 
+## Followup 
+
+Ok, we checked and all this stuff is on Git. Next we will open and save another file - after committing this. 
+
+
+
+
