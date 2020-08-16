@@ -21,6 +21,8 @@ Is that correct?
 
 Ok, we checked and all this stuff is on Git. Next we will open and save another file - after committing this. 
 
+## Really going for it.
 
+Perhaps getting ehead of ourselves. We are going to write this sentence and then try to pull it to Rstudio. 
 
 
