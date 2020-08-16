@@ -25,4 +25,6 @@ Ok, we checked and all this stuff is on Git. Next we will open and save another 
 
 Perhaps getting ehead of ourselves. We are going to write this sentence and then try to pull it to Rstudio. 
 
+Wow that worked. this is fantastic. 
+
 
