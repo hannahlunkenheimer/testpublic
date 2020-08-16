@@ -12,4 +12,6 @@ abline(a = 0, b = 0, lty =3)
 # package  not loaded in this script 
 ggplot(data = data.frame(x=rv1, y=rv2), aes(x , y)) + 
   geom_point() + geom_smooth(method = 'lm')
-  
+
+# so if we just hit push on the tab below, nothing happens. have to stage and commit first. 
+
