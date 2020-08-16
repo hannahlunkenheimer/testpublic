@@ -14,4 +14,5 @@ ggplot(data = data.frame(x=rv1, y=rv2), aes(x , y)) +
   geom_point() + geom_smooth(method = 'lm')
 
 # so if we just hit push on the tab below, nothing happens. have to stage and commit first. 
-
+# writing from GitHub: 
+# wow, these plots are really not that awesome. 
