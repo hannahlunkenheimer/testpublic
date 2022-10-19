@@ -1,0 +1,89 @@
+---
+title: "Google Trends Assignment"
+author: "Hannah Lunkenheimer"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readr)
+library(ggplot2)
+library(reshape2)
+library(dplyr)
+
+setwd("~/Documents/GitHub/testpublic")
+trends <- read_csv("Googletrends.csv")
+
+trends <- na.omit(trends)
+```
+
+```{r relig and conserv numbers by state}
+# let's convert our data to tall format so we can include all of the same plots on the same figure
+
+longdata <- trends %>% dplyr::select(starts_with("State"), starts_with("Religiosity"), starts_with("Conservative")) 
+longdata <- melt(longdata, id.vars= c("State"))
+
+ggplot(longdata, aes(value, col=variable)) + 
+  geom_bar() +
+  theme_minimal()
+
+```
+
+```{r religiosity conserv correlation}
+cor.test(trends$Religiosity, trends$Conservative)
+#t = 5.8599, df = 49, p-value = 3.845e-07
+# coefficient 0.6418971 
+
+```
+
+```{r religiosity and conservatism plot}
+
+ggplot(data=trends, aes(x=Religiosity, y=Conservative)) +
+  geom_point(color = "gray") +
+  geom_text(aes(label=short), size = 5) +
+  theme_minimal() +  
+  geom_smooth(method="lm") +
+  labs(title="Figure A", x ="State Religiosity", y = "State Conservatism")
+
+
+```
+
+```{r religiosity correlation}
+cor.test(trends$Religiosity, trends$Abortion)
+# t = -0.49262, df = 49, p-value = 0.6245
+# coefficient -0.07020049 
+
+```
+
+```{r religiosity plot}
+
+ggplot(data=trends, aes(x=Religiosity, y=Abortion)) +
+  geom_point(color = "gray") +
+  geom_text(aes(label=short), size = 5) +
+  theme_minimal() +  
+  geom_smooth(method="lm") +
+  labs(title="Figure B", x ="State Religiosity", y = "Abortion Google Trends (Topic)")
+
+```
+
+```{r conservatism correlation}
+
+cor.test(trends$Conservative, trends$Abortion)
+# t = -2.1529, df = 49, p-value = 0.03627
+# coefficient -0.2939723 
+
+
+```
+
+```{r conservatism plot}
+
+ggplot(data=trends, aes(x=Conservative, y=Abortion)) +
+  geom_point(color = "gray") +
+  geom_text(aes(label=short), size = 5) +
+  theme_minimal() +  
+  geom_smooth(method="lm") +
+  labs(title="Figure C", x ="State Conservatism", y = "Abortion Google Trends (Topic)")
+
+```
